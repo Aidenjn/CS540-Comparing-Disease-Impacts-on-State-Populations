@@ -1,0 +1,18 @@
+Link to source:
+https://data.cdc.gov/Heart-Disease-Stroke-Prevention/Heart-Disease-Mortality-Data-Among-US-Adults-35-by/i2vk-mgdh
+
+Procedure for retrieval:
+1. Clicked "Export" on the right-up corner and clicked the "CSV" to download .csv file
+
+Proceduce for database insertion:
+
+1.I kept useful columns, "Year", "LocationAbbr"(State), "LocationDesc"(County), "class" "Data_Value"(Unit:per 100,000 people) and "Stratification1"(Gender).
+
+2.The "Year" columns is average for 2013 and 2015, so always show 2014 in this column
+
+3.Convert CSV into SQL file with https://www.convertcsv.com/csv-to-sql.htm
+* Check Keep original field names as column names
+* Check Enclose field names with Backtick(`name`)
+* Change table name to HeartDisease
+
+4.Download Result .SQL file 
