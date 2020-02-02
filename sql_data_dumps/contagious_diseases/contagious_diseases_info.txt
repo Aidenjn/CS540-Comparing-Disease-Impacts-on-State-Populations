@@ -1,0 +1,36 @@
+Link to source:
+https://www.kaggle.com/pitt/contagious-diseases
+
+Procedure for retrieval:
+1. Clicked "Download" button.
+2. Decompress the .zip file and then will get 7 .csv files for different contagious diseases
+
+Proceduce for database insertion:
+1. Remove the “state_name” column since it column “state” is the abbreviation of columns “state_name”.
+2. The initial “week” columns has both year and week information inside, for example: 199701(Year 1997 and week 01). I used Jupyter notebook to split this column.
+	df['Year'] = df.week.map(lambda x: x//100) -> create a new column called "Year" from the original "week" columns
+	df['Week'] = df.week.map(lambda x: x%100) -> create a new column called "Week" from the original "week" columns
+
+3. Imported CSV into phpMyAdmin with the following selected:
+    * Char set: utf-8
+    * Partial import: unchecked
+    * Enable foreign key checks: checked
+    * Format: CSV
+    * Columns separated with: ,
+    * Columns enclosed with: "
+    * Columns escaped with: "
+    * Lines terminated with: auto
+    * The first line of the file contains the table column names: unchecked
+    * Do not abort on INSERT error: unchecked
+(Problem: the transformation process crashed if I click "The first line of the file contains the table column names". So I did it without using that function, and the first row of the output I got is column names. I then fixed this problem on mysqlworkbrench manually.)
+
+4. Exported as CSV named StateDiabetes with the following selected:
+    * Export method: Quick
+    * Format: SQL
+    * Rows: Dump all rows
+5. Modified the dump file in the following ways:
+    * Changed all `TABLE 4` entries to `StatesDiabetes`
+    * Changed Year column to year(4) type
+    * Changed cases column to integer(5) type
+    * Changed incidence_per_capita column to float(20) type
+    * Changed Week column to integer(4) type
