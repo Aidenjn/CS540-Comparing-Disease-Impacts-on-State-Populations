@@ -1,0 +1,24 @@
+Link to source:
+https://wonder.cdc.gov/controller/datarequest/D154#
+
+Procedure for retrieval:
+1. Clicked "Export"
+2. Download .txt file
+3. Apply excel convert .txt file to .csv file
+
+Proceduce for database insertion:
+1. Keep "Yearly July 1st Estimates"(Year), "State", "Population" columns
+2. Imported CSV into https://www.convertcsv.com/csv-to-sql.htm
+    * Char set: default
+    * Check Keep original field names as column names 
+    * Check Enclose field names below with Backtick (`name`) 
+    * Format: CSV
+    * Check "Drop Table/View" and "IF EXISTS" and "Create Table/View"
+    * Clicked "CSV To SQL Insert" to refresh content.
+
+3. Exported as CSV named PopulationUS with the following selected:
+
+4. Note: 
+* Year columns from 1990 to 2018
+* Each 53 rows represented one year (last row showed total of population of that year)
+ 
