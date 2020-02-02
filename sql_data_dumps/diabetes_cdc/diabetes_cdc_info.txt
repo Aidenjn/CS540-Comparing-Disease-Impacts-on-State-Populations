@@ -23,7 +23,7 @@ Proceduce for database insertion:
     * Format: SQL
     * Rows: Dump all rows
 4. Modified the dump file in the following ways:
-    * Removed insert record that had year as a long reference string.
+    * Removed extraneous insert record that had the value of "US Diabetes Surveillance System; www.cdc.gov/diabetes/data; Division of Diabetes Translation - Centers for Disease Control and Prevention." inside of the year field.
     * Changed all "No Data" entries to NULL.
     * Changed all `TABLE 4` entries to `StatesDiabetes`
     * Changed Year column to year(4) type
