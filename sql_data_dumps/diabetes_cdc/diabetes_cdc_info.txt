@@ -1,0 +1,32 @@
+Link to source:
+https://gis.cdc.gov/grasp/diabetes/DiabetesAtlas.html#
+
+Procedure for retrieval:
+1. Clicked "State Data" dropdown and selected "All States".
+2. Above the heatmap to the right of the page, I selected the "Download Options" button, and then clicked "Download data as CSV".
+
+Proceduce for database insertion:
+1. Deleted first two rows and exported as CSV in Microsoft Excel.
+2. Imported CSV into phpMyAdmin with the following selected:
+    * Char set: utf-8
+    * Partial import: unchecked
+    * Enable foreign key checks: checked
+    * Format: CSV
+    * Columns separated with: ,
+    * Columns enclosed with: "
+    * Columns escaped with: \
+    * Lines terminated with: auto
+    * The first line of the file contains the table column names: checked
+    * Do not abort on INSERT error: unchecked
+3. Exported as CSV named StateDiabetes with the following selected:
+    * Export method: Quick
+    * Format: SQL
+    * Rows: Dump all rows
+4. Modified the dump file in the following ways:
+    * Removed insert record that had year as a long reference string.
+    * Changed all "No Data" entries to NULL.
+    * Changed all `TABLE 4` entries to `StatesDiabetes`
+    * Changed Year column to year(4) type
+    * Changed Percentage column to float(4) type
+    * Changed LowerLimit column to float(4) type
+    * Changed UpperLimit column to float(4) type
