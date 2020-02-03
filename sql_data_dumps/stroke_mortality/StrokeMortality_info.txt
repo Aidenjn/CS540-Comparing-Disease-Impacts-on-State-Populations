@@ -1,0 +1,22 @@
+Link to source: https://catalog.data.gov/dataset/stroke-mortality-data-among-us-adults-35-by-state-territory-and-county
+CSV: Stroke_Mortality_Data_Among_US_Adults__35___by_State_Territory_and_County.csv
+
+Proceduce for database insertion:
+1. Split the CSV into two parts with eah part containing the column names header. The complete CSV is too large to import into mysql.
+2. Imported CSV into phpMyAdmin with the following selected:
+    * Char set: utf-8
+    * Partial import: unchecked
+    * Enable foreign key checks: checked
+    * Format: CSV
+    * Columns separated with: ,
+    * Columns enclosed with: "
+    * Columns escaped with: \
+    * Lines terminated with: auto
+    * The first line of the file contains the table column names: checked
+    * Do not abort on INSERT error: unchecked
+3. Repeat step 2 for both CSV parts.
+4. Export each table as CSV.
+    * Export method: Quick
+    * Format: SQL
+    * Rows: Dump all rows
+5. Manually merge the two SQL files into one, renaming 'TABLE *' to 'StrokeMortality'.
