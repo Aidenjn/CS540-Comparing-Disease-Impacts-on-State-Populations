@@ -1,0 +1,52 @@
+Pulling data for year 2005 from:
+https://www.kaggle.com/residentmario/us-veteran-suicides
+
+Retrieved from Kaggle by logging in and selecting the download button.
+
+Just some python commands for my reference:
+>>> import os
+>>> os.getcwd()
+'/home/user'
+>>> os.chdir("/tmp/")
+>>> os.getcwd()
+'/tmp'
+
+There were columns with missing data. There are columns whose meaning I am not sure of.
+Activity in python terminal:
+
+Python 3.7.3 (default, Apr 24 2019, 15:29:51) [MSC v.1915 64 bit (AMD64)] :: Anaconda, Inc. on win32
+Type "help", "copyright", "credits" or "license" for more information.
+>>> import os
+>>> import pandas
+>>> os.chdir("Desktop\Winter 2020\CS 540\Final project")
+>>> os.getcwd()
+'C:\\Users\\Diksha\\Desktop\\Winter 2020\\CS 540\\Final project'
+>>> data = pandas.read_csv('veteran_suicide_rates2005.csv')
+>>> data.head()
+   Unnamed: 0       state  vet_pop  overall_pop_18  vet_pop_p  ...  vet_55_64  vet_60  vet_65   vet_rate   civ_rate
+0           0     Alabama   403950         3344721   0.120772  ...        NaN     NaN     NaN  33.419978  13.601875
+1           1      Alaska    74482          446969   0.166638  ...        5.0     NaN     4.0  32.222550  28.725835
+2           2     Arizona   538880         4238996   0.127124  ...        NaN     NaN     NaN  41.753266  19.458849
+3           3    Arkansas   259304         2023819   0.128126  ...       16.0     NaN    25.0  31.237466  18.078622
+4           4  California  2193336        25543447   0.085867  ...        NaN     NaN   317.0  28.860147  11.019220
+
+[5 rows x 29 columns]
+>>> data.fillna(data.mean(), inplace=True)
+>>> data.head()
+   Unnamed: 0       state  vet_pop  overall_pop_18  vet_pop_p  ...  vet_55_64  vet_60      vet_65   vet_rate   civ_rate
+0           0     Alabama   403950         3344721   0.120772  ...  26.483871   112.0   57.393939  33.419978  13.601875
+1           1      Alaska    74482          446969   0.166638  ...   5.000000   112.0    4.000000  32.222550  28.725835
+2           2     Arizona   538880         4238996   0.127124  ...  26.483871   112.0   57.393939  41.753266  19.458849
+3           3    Arkansas   259304         2023819   0.128126  ...  16.000000   112.0   25.000000  31.237466  18.078622
+4           4  California  2193336        25543447   0.085867  ...  26.483871   112.0  317.000000  28.860147  11.019220
+
+[5 rows x 29 columns]
+>>> data.to_csv('veteran_suicide_rates2005c.csv')
+>>>  
+
+Settings while importing on phpyadmin:
+
+Checked box for:- The first line of the file contains the table column names
+Renamed table to vet_suic_rates2005
+
+Exported as sql file.
