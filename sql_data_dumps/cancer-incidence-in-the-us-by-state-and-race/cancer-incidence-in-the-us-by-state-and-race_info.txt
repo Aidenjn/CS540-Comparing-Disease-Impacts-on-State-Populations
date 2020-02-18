@@ -1,0 +1,25 @@
+Link to source:
+https://www.kaggle.com/salomekariuki/cancer-incidence-in-the-us-by-state-and-race
+
+Procedure for retrieval:
+1. Clicked "Download" button.
+2. Decompress the .zip file and then will get 3 .csv files which are "Cancer_Occurrence", "Cancer" and "State".
+
+Proceduce for database insertion:
+1. Imported CSV into phpMyAdmin with the following selected:
+    * Char set: utf-8
+    * Partial import: unchecked
+    * Enable foreign key checks: checked
+    * Format: CSV
+    * Columns separated with: ,
+    * Columns enclosed with: "
+    * Columns escaped with: "
+    * Lines terminated with: auto
+    * The first line of the file contains the table column names: unchecked
+    * Do not abort on INSERT error: unchecked
+
+2. Exported as CSV named cancer-incidence-in-the-us-by-state-and-race with the following selected:
+    * Export method: Quick
+    * Format: SQL
+    * Rows: Dump all rows
+  
