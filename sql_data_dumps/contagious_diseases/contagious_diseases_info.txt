@@ -24,7 +24,7 @@ Proceduce for database insertion:
     * Do not abort on INSERT error: unchecked
 (Problem: the transformation process crashed if I click "The first line of the file contains the table column names". So I did it without using that function, and the first row of the output I got is column names. I then fixed this problem on mysqlworkbrench manually.)
 
-4. Exported as CSV named StateDiabetes with the following selected:
+4. Exported as CSV named "contagious_diseases" with the following selected:
     * Export method: Quick
     * Format: SQL
     * Rows: Dump all rows
