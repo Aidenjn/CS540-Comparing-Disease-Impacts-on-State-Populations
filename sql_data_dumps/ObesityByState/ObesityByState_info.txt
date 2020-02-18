@@ -1,0 +1,25 @@
+Link to source: https://catalog.data.gov/dataset/national-obesity-by-state-b181b
+CSV: http://data-lakecountyil.opendata.arcgis.com/datasets/3e0c1eb04e5c48b3be9040b0589d3ccf_8.csv
+
+National Obesity Percentages by State. Explanation of Field Attributes:Obesity -  The percent of the state population that is considered obese from the 2015 CDC BRFSS Survey.
+
+
+Procedure for database insertion:
+1. Split the CSV into two parts with each part containing the column names header. The complete CSV is too large to import into mysql.
+2. Imported CSV into phpMyAdmin with the following selected:
+    * Char set: utf-8
+    * Partial import: unchecked
+    * Enable foreign key checks: checked
+    * Format: CSV
+    * Columns separated with: ,
+    * Columns enclosed with: "
+    * Columns escaped with: \
+    * Lines terminated with: auto
+    * The first line of the file contains the table column names: checked
+    * Do not abort on INSERT error: unchecked
+3. Repeat step 2 for both CSV parts.
+4. Export each table as CSV.
+    * Export method: Quick
+    * Format: SQL
+    * Rows: Dump all rows
+5. Manually merge the two SQL files into one, renaming 'TABLE *' to 'StrokeMortality'.
