@@ -1,0 +1,31 @@
+Link to source:
+http://ghdx.healthdata.org/record/ihme-data/united-states-substance-use-disorders-intentional-injuries-mortality-rates-county-1980-2014
+
+Procedure for retrieval:
+1. Downloaded the following files:
+    * States A-F (Annual, by Sex) - CSV
+    * States G-L (Annual, by Sex) - CSV
+    * States M-N (Annual, by Sex) - CSV
+    * States O-S (Annual, by Sex) - CSV
+    * States T-W and US (Annual, by Sex) - CSV
+2. For each state's CSV file in each of the downloaded folders, performed the following:
+
+Proceduce for database insertion:
+1. Imported CSV into phpMyAdmin with the following selected:
+    * Char set: utf-8
+    * Partial import: unchecked
+    * Enable foreign key checks: checked
+    * Format: CSV
+    * Columns separated with: ,
+    * Columns enclosed with: "
+    * Columns escaped with: \
+    * Lines terminated with: auto
+    * The first line of the file contains the table column names: checked
+    * Do not abort on INSERT error: unchecked
+3. Exported as CSV with the following selected:
+    * Export method: Quick
+    * Format: SQL
+    * Rows: Dump all rows
+4. Modified the dump file in the following ways:
+    * Renamed file to [State Name].sql
+    * Changed all `TABLE [#]` entries to `DEATHS_BY_SUBSTANCE_[STATENAME]`
