@@ -1,0 +1,31 @@
+Link to source:
+https://www.kaggle.com/cdc/health-care-access-coverage
+
+Procedure for retrieval:
+1. Clicked "Download" button.
+2. Decompress the .zip file and then will get 7 .csv files for different contagious diseases
+
+Proceduce for database insertion:
+1. Remove the “Location 1” column since it column “State” already represent the location.
+2. Remove redundancy word in "State column" such as (States, DC, and Territories) and (States and DC
+3. Change the column name of "Yes" and "No" into "Have_health_care_coverage" and "No_health_care_coverage" respectively, also change their types from percentage into decimal point.
+4. Delete the category and condition columns since it is redundancy.
+5. Imported CSV into phpMyAdmin with the following selected:
+    * Char set: utf-8
+    * Partial import: unchecked
+    * Enable foreign key checks: checked
+    * Format: CSV
+    * Columns separated with: ,
+    * Columns enclosed with: "
+    * Columns escaped with: "
+    * Lines terminated with: auto
+    * The first line of the file contains the table column names: unchecked
+    * Do not abort on INSERT error: unchecked
+
+4. Exported as CSV named Health_care_access_coverage with the following selected:
+    * Export method: Quick
+    * Format: SQL
+    * Rows: Dump all rows
+5. Modified the dump file in the following ways:
+    * Changed all `TABLE 4` entries to `Health_care_access_coverage`
+    * Changed Year column to year(4) type
