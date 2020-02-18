@@ -1,0 +1,7 @@
+Link to source: https://catalog.data.gov/dataset/nchs-potentially-excess-deaths-from-the-five-leading-causes-of-death-8ff59
+CSV: https://data.cdc.gov/api/views/vdpk-qzpr/rows.csv?accessType=DOWNLOAD
+
+NCHS - Potentially Excess Deaths from the Five Leading Causes of Death
+
+Procedure for database insertion:
+1. Use https://www.convertcsv.com/csv-to-sql.htm to convert to SQL.
