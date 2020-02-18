@@ -1,0 +1,30 @@
+Link to source:
+https://wonder.cdc.gov/controller/datarequest/D77;jsessionid=C1B6EDB85BF5283BBC2A2D2172CF322E
+
+Download the resource from link:
+1. Select layout from "Group Result By" "Year","State","UCD-Drug/Alcohol induced"
+2. Check "Percent of Total Deaths"
+3. Tune all parameter from each phase
+4. Click "Send"
+
+Procedure for retrieval:
+1. Clicked "Export"
+2. Download .txt file
+3. Apply excel convert .txt file to .csv file
+
+Proceduce for database insertion:
+1. Keep "Year", "State", "Drug_Alcohol_Induced" "Population", "Crude Rate", "Total_Deaths_percentage" columns
+
+2. Imported CSV into https://www.convertcsv.com/csv-to-sql.htm
+    * Char set: default
+    * Check Keep original field names as column names 
+    * Check Enclose field names below with Backtick (`name`) 
+    * Format: CSV
+    * Check "Drop Table/View" and "IF EXISTS" and "Create Table/View"
+    * Clicked "CSV To SQL Insert" to refresh content.
+
+3. Exported as CSV named PopulationUS with the following selected:
+
+4. Note: 
+*Crude Rates are expressed as the number of deaths reported each calendar year per the factor you select. The default factor is per 100,000 population, reporting the death rate per 100,000 persons.	Crude Rate = Death Counts / Population * 100,000
+ 
