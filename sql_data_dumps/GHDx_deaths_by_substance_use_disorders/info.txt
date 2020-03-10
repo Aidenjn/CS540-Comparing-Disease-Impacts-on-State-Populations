@@ -8,10 +8,9 @@ Procedure for retrieval:
     * States M-N (Annual, by Sex) - CSV
     * States O-S (Annual, by Sex) - CSV
     * States T-W and US (Annual, by Sex) - CSV
-2. For each state's CSV file in each of the downloaded folders, performed the following:
-
-Proceduce for database insertion:
-1. Imported CSV into phpMyAdmin with the following selected:
+2. Put all folders in a folder called "ghdx_data".
+3. Ran the python script called "substanceUseGenScript.py" in the same folder that "ghdx_data" is in.
+4. Imported CSV into phpMyAdmin with the following selected:
     * Char set: utf-8
     * Partial import: unchecked
     * Enable foreign key checks: checked
@@ -22,10 +21,9 @@ Proceduce for database insertion:
     * Lines terminated with: auto
     * The first line of the file contains the table column names: checked
     * Do not abort on INSERT error: unchecked
-3. Exported as CSV with the following selected:
+5. Ran following line of SQL to change the table name:
+    RENAME TABLE `TABLE 18` TO `substance_use_mortality`;
+6. Exported as CSV with the following selected:
     * Export method: Quick
     * Format: SQL
     * Rows: Dump all rows
-4. Modified the dump file in the following ways:
-    * Renamed file to [State Name].sql
-    * Changed all `TABLE [#]` entries to `DEATHS_BY_SUBSTANCE_[STATENAME]`
