@@ -1,0 +1,6 @@
+CREATE VIEW state_disease_scores AS
+SELECT state, state_rates.year, AVG((state_rates.rate - disease_rates.average_rate)/disease_rates.average_rate) * 100
+FROM state_rates
+JOIN disease_rates ON state_rates.year = disease_rates.year AND state_rates.disease = disease_rates.disease
+GROUP BY state, year
+;

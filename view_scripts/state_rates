@@ -1,0 +1,5 @@
+CREATE VIEW state_rates AS
+SELECT state_name AS state, year, cause_name AS disease, mx AS rate FROM substance_use_mortality
+JOIN
+SELECT state_name AS state, year, cause_name AS disease, mx AS rate FROM substance_use_mortality
+;
