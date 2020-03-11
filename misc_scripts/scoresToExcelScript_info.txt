@@ -1,0 +1,9 @@
+Purpose:
+Display a state by year table of state disease scores. This format is much easier for making charts and other visualizations in Microsoft Excel.
+
+Usage:
+1. Export disease_scores view from phpMyAdmin as a CSV file.
+2. Place file in the same folder as this script.
+3. Make sure python3 is installed.
+4. Run the following command:
+    python3 scoresToExcelScript.py
