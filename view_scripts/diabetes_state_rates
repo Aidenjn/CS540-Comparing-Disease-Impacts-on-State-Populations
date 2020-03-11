@@ -1,0 +1,5 @@
+CREATE VIEW diabetes_state_rates AS
+SELECT State AS state, `Year` AS `year`, "Diabetes" AS disease, Percentage AS rate
+FROM `StatesDiabetes`
+WHERE Percentage IS NOT NULL
+GROUP BY state, year

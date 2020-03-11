@@ -1,0 +1,5 @@
+CREATE VIEW mumps_state_rates AS
+SELECT StateAbbreviation.state AS state, `Year` AS `year`, disease, AVG(incidence_per_capita) AS rate
+FROM `mumps`
+JOIN StateAbbreviation ON mumps.state = StateAbbreviation.State_Abbreviation
+GROUP BY StateAbbreviation.state, Year, disease

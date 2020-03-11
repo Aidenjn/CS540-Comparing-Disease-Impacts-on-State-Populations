@@ -1,0 +1,5 @@
+CREATE VIEW pertussis_state_rates AS
+SELECT StateAbbreviation.state AS state, `Year` AS `year`, disease, AVG(incidence_per_capita) AS rate
+FROM `pertussis`
+JOIN StateAbbreviation ON pertussis.state = StateAbbreviation.State_Abbreviation
+GROUP BY StateAbbreviation.state, Year, disease

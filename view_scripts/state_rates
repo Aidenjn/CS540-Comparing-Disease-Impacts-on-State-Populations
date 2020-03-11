@@ -1,5 +1,20 @@
 CREATE VIEW state_rates AS
 SELECT state_name AS state, year, cause_name AS disease, mx AS rate FROM substance_use_mortality
-JOIN
-SELECT state_name AS state, year, cause_name AS disease, mx AS rate FROM substance_use_mortality
+UNION
+SELECT * FROM hepatitis_state_rates
+UNION
+SELECT * FROM measles_state_rates
+UNION
+SELECT * FROM multipleDiseases_state_rates
+UNION
+SELECT * FROM mumps_state_rates
+UNION
+SELECT * FROM pertussis_state_rates
+UNION
+SELECT * FROM polio_state_rates
+UNION
+SELECT * FROM rubella_state_rates
+UNION
+SELECT * FROM smallpox_state_rates
+ORDER BY state, disease, year
 ;

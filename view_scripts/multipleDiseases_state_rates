@@ -1,0 +1,5 @@
+CREATE VIEW multipleDiseases_state_rates AS
+SELECT State AS state, `YEAR` AS `year`, Disease AS disease, AVG(Crude_Rate) AS rate
+FROM `MultipleDiseases`
+WHERE NOT(Disease = "Total")
+GROUP BY state, year, disease

@@ -1,4 +1,4 @@
 CREATE VIEW disease_rates AS
 SELECT year, disease, AVG(rate) AS average_rate FROM state_rates
-GROUP BY year, disease
+GROUP BY disease, year
 ;
