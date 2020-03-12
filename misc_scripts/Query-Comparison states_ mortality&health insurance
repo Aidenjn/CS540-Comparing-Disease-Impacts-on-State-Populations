@@ -1,0 +1,32 @@
+Query of searching TOP3 and Bottom3:
+
+SELECT M.State, SUM(M.Crude_Rate) FROM MultipleDiseases M
+WHERE M.YEAR >=1999 AND M.YEAR <= 2010 
+AND (SELECT MAX(M1.Crude_Rate) 
+        FROM `MultipleDiseases` M1 
+        WHERE M1.State = M.State AND M1.Disease <> "Total")
+GROUP BY M.State
+ORDER BY SUM(M.Crude_Rate) DESC
+
+
+Created a view to join ‘MultipleDiseases’ and ‘Health_care_access_coverage’ relations
+
+View for TOP 3:
+CREATE OR REPLACE VIEW TOP3_Mortality AS
+SELECT M.Year, M.State, M.Crude_Rate, M.Population, H.Have_health_care_coverage
+FROM MultipleDiseases M
+LEFT JOIN Health_care_access_coverage H ON M.YEAR = H.Year AND M.State = H.State
+WHERE M.State IN ("West Virginia", "Pennsylvania", "Arkansas")
+AND M.Disease = ("Total")
+AND M.Year >= 1999 AND M.Year <= 2010
+ORDER BY M.YEAR ASC
+
+View for Bottom 3:
+CREATE OR REPLACE VIEW Bottom3_Mortality AS
+SELECT M.Year, M.State, M.Crude_Rate, M.Population, H.Have_health_care_coverage
+FROM MultipleDiseases M
+LEFT JOIN Health_care_access_coverage H ON M.YEAR = H.Year AND M.State = H.State
+WHERE M.State IN ("Colorado", "Utah", "Alaska")
+AND M.Disease = ("Total")
+AND M.Year >= 1999 AND M.Year <= 2010
+ORDER BY M.YEAR ASC
