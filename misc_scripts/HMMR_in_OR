@@ -1,0 +1,39 @@
+Cases of Hepatitis, Measles, Mumps, and Rubella in Oregon from 1960 to 1990
+
+We have datasets about Hepatitis, Measles, Mumps and Rubella from 1960s to 1990s. Creating a view to document the years in Oregon that all 4 diseases have case records:
+
+1.
+CREATE VIEW YearsHMMR AS 
+(SELECT DISTINCT Year FROM hepatitis WHERE hepatitis.state = 'OR'
+INTERSECT 
+SELECT DISTINCT Year FROM measles WHERE measles.state = 'OR'
+INTERSECT 
+SELECT DISTINCT Year FROM mumps WHERE mumps.state = 'OR'
+INTERSECT 
+SELECT DISTINCT Year FROM rubella WHERE rubella.state = 'OR')
+
+2.
+Find the sum of Measles cases in Oregon in those years:
+SELECT Year, SUM(cases) AS hepatitis
+FROM hepatitis WHERE state = 'OR' AND Year = ANY (
+    SELECT * FROM YearsHMMR
+) GROUP BY Year
+
+Find the sum of Measles cases in Oregon in those years:
+SELECT SUM(cases) AS measles
+FROM measles WHERE state = 'OR' AND Year = ANY (
+    SELECT * FROM YearsHMMR
+) GROUP BY Year
+
+Find the sum of Mumps cases in Oregon in those years:
+SELECT SUM(cases) AS mumps
+FROM mumps WHERE state = 'OR' AND Year = ANY (
+    SELECT * FROM YearsHMMR
+) GROUP BY Year
+
+Find the sum of Rubella cases in Oregon in those years:
+SELECT SUM(cases) AS rubella
+FROM rubella WHERE state = 'OR' AND Year = ANY (
+    SELECT * FROM YearsHMMR
+) GROUP BY Year
+
